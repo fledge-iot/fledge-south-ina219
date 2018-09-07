@@ -19,6 +19,7 @@ set(PLUGIN_TYPE "south")
 
 # Add here all needed FogLAMP libraries as list
 set(NEEDED_FOGLAMP_LIBS common-lib)
+
 # Add here additional needed libraries
 set(WIRING_PI_LIBS -lwiringPi -lwiringPiDev)
 
