@@ -69,7 +69,7 @@ string	address, range;
 	if (config->itemExists("address"))
 	{
 		address = config->getValue("address");
-		ina219 = new INA219(atoi(address.c_str()));
+		ina219 = new INA219(strtol(address.c_str(), NULL, 10));
 	}
 	if (config->itemExists("range"))
 	{
@@ -132,6 +132,36 @@ INA219 *ina219 = (INA219 *)handle;
  */
 void plugin_reconfigure(PLUGIN_HANDLE *handle, string& newConfig)
 {
+ConfigCategory	config(newConfig);
+INA219		*ina219 = (INA219 *)handle;
+
+	if (config.itemExists("address"))
+	{
+		address = confg.getValue("address");
+		ina219->setAddress(strtol(address.c_str(), NULL, 10));
+	}
+	if (conf.temExists("range"))
+	{
+		INA219_CONFIGURATION conf = CONF_32V_2A;
+		range = config.getValue("range");
+		if (range.compare("32V2A") == 0)
+		{
+			conf = CONF_32V_2A;
+		}
+		else if (range.compare("32V1A") == 0)
+		{
+			conf = CONF_32V_1A;
+		}
+		else if (range.compare("16V400mA") == 0)
+		{
+			conf = CONF_16V_400MA;
+		}
+		ina219->configure(conf);
+	}
+	if (config.itemExists("asset"))
+	{
+		ina219->setAssetName(config.getValue("asset"));
+	}
 }
 
 /**
