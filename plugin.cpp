@@ -132,15 +132,16 @@ INA219 *ina219 = (INA219 *)handle;
  */
 void plugin_reconfigure(PLUGIN_HANDLE *handle, string& newConfig)
 {
-ConfigCategory	config(newConfig);
+ConfigCategory	config("new", newConfig);
 INA219		*ina219 = (INA219 *)handle;
+string		address, range;
 
 	if (config.itemExists("address"))
 	{
-		address = confg.getValue("address");
+		address = config.getValue("address");
 		ina219->setAddress(strtol(address.c_str(), NULL, 10));
 	}
-	if (conf.temExists("range"))
+	if (config.itemExists("range"))
 	{
 		INA219_CONFIGURATION conf = CONF_32V_2A;
 		range = config.getValue("range");
