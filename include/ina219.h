@@ -86,6 +86,7 @@ class INA219
 	public:
 		INA219(int address);
 		~INA219();
+		void		setAddress(const int address);
 		void		configure(INA219_CONFIGURATION conf);
 		void		setAssetName(const std::string& name);
 		Reading		takeReading();
