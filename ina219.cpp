@@ -40,6 +40,17 @@ INA219::setAssetName(const std::string& asset)
 }
 
 /**
+ * Set the I2C address for the INA219
+ *
+ * @param address	The I2C address of the INA219
+ */
+void
+INA219::setAddress(const int address)
+{
+	m_address = address;
+}
+
+/**
  * Configuration the range of the INA219 - this let's
  * us trade off accuracy verses range.
  *
