@@ -24,13 +24,16 @@ using namespace std;
  * Default configuration
  */
 #define CONFIG	"{\"plugin\" : { \"description\" : \"INA219 current and voltage sensor\", " \
-			"\"type\" : \"string\", \"default\" : \"ina219\" }, " \
+			"\"type\" : \"string\", \"default\" : \"ina219\", \"readonly\": \"true\" }, " \
 		"\"asset\" : { \"description\" : \"Asset name\", "\
-			"\"type\" : \"string\", \"default\" : \"electrical\" }, " \
+			"\"type\" : \"string\", \"default\" : \"electrical\", \"order\": \"1\", " \
+			 "\"displayName\": \"Asset Name\" }, " \
 		"\"address\" : { \"description\" : \"Address of IAN219\", " \
-			"\"type\" : \"integer\", \"default\" : \"64\" }, "\
+			"\"type\" : \"integer\", \"default\" : \"64\", \"order\": \"2\", " \
+			"\"displayName\": \"I2C Address\" }, "\
 		"\"range\" : { \"description\" : \"Required range setting\", " \
-			"\"type\" : \"string\", \"default\" : \"32V2A\" } "\
+			"\"type\" : \"string\", \"default\" : \"32V2A\", \"order\": \"3\", " \
+			 "\"displayName\": \"Voltage Range\" } "\
 			"}"
 
 /**
