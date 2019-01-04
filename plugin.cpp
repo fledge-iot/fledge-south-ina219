@@ -136,7 +136,7 @@ INA219 *ina219 = (INA219 *)handle;
 void plugin_reconfigure(PLUGIN_HANDLE *handle, string& newConfig)
 {
 ConfigCategory	config("new", newConfig);
-INA219		*ina219 = (INA219 *)handle;
+INA219		*ina219 = (INA219 *)*handle;
 string		address, range;
 
 	if (config.itemExists("address"))
