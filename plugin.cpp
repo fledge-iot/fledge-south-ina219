@@ -17,6 +17,7 @@
 #include <plugin_exception.h>
 #include <config_category.h>
 #include <rapidjson/document.h>
+#include <version.h>
 
 using namespace std;
 
@@ -24,13 +25,16 @@ using namespace std;
  * Default configuration
  */
 #define CONFIG	"{\"plugin\" : { \"description\" : \"INA219 current and voltage sensor\", " \
-			"\"type\" : \"string\", \"default\" : \"ina219\" }, " \
+			"\"type\" : \"string\", \"default\" : \"ina219\", \"readonly\": \"true\" }, " \
 		"\"asset\" : { \"description\" : \"Asset name\", "\
-			"\"type\" : \"string\", \"default\" : \"electrical\" }, " \
+			"\"type\" : \"string\", \"default\" : \"electrical\", \"order\": \"1\", " \
+			 "\"displayName\": \"Asset Name\" }, " \
 		"\"address\" : { \"description\" : \"Address of IAN219\", " \
-			"\"type\" : \"integer\", \"default\" : \"64\" }, "\
+			"\"type\" : \"integer\", \"default\" : \"64\", \"order\": \"2\", " \
+			"\"displayName\": \"I2C Address\" }, "\
 		"\"range\" : { \"description\" : \"Required range setting\", " \
-			"\"type\" : \"string\", \"default\" : \"32V2A\" } "\
+			"\"type\" : \"string\", \"default\" : \"32V2A\", \"order\": \"3\", " \
+			 "\"displayName\": \"Voltage Range\" } "\
 			"}"
 
 /**
@@ -43,7 +47,7 @@ extern "C" {
  */
 static PLUGIN_INFORMATION info = {
 	"ina219",                 // Name
-	"1.0.0",                  // Version
+	VERSION,                  // Version
 	0,    			  // Flags
 	PLUGIN_TYPE_SOUTH,        // Type
 	"1.0.0",                  // Interface version
@@ -133,7 +137,7 @@ INA219 *ina219 = (INA219 *)handle;
 void plugin_reconfigure(PLUGIN_HANDLE *handle, string& newConfig)
 {
 ConfigCategory	config("new", newConfig);
-INA219		*ina219 = (INA219 *)handle;
+INA219		*ina219 = (INA219 *)*handle;
 string		address, range;
 
 	if (config.itemExists("address"))
