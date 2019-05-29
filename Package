@@ -15,8 +15,8 @@ case "$arch" in
 		echo "The ina219 plugin is not supported on Intel architectures"
 		exit 0
 		;;
-	armhf)
-		requirements="${requirements}, wiringpi"
+	armv7l)
+		requirements="${requirements},wiringpi"
 		;;
 	aarch64)
 		;;
