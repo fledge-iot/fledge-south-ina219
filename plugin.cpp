@@ -28,7 +28,7 @@ using namespace std;
 			"\"type\" : \"string\", \"default\" : \"ina219\", \"readonly\": \"true\" }, " \
 		"\"asset\" : { \"description\" : \"Asset name\", "\
 			"\"type\" : \"string\", \"default\" : \"electrical\", \"order\": \"1\", " \
-			 "\"displayName\": \"Asset Name\" }, " \
+			 "\"displayName\": \"Asset Name\" , \"mandatory\": \"true\" }, " \
 		"\"address\" : { \"description\" : \"Address of IAN219\", " \
 			"\"type\" : \"integer\", \"default\" : \"64\", \"order\": \"2\", " \
 			"\"displayName\": \"I2C Address\" }, "\
